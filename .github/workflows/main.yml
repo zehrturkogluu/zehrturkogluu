@@ -1,0 +1,22 @@
+name: generate-snake
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # her gün gece çalışsın
+  workflow_dispatch: # manuel çalıştırabilmek için
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Generate Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: zeh
+
